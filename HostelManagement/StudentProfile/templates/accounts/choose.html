@@ -1,0 +1,46 @@
+{% extends 'accounts/layout.html' %}
+
+{% block logout %}
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+<li><a href="/logout/">LOGOUT</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="card center-align">
+    <div class="card-content black-text">
+          <span class="card-title"><h4>Choose your desired roommate.</h4></span>
+    </div>
+    <div class="card-content">
+        <form method="GET" action="">  
+                <input type="text" name="q" placeholder="Search student name" />
+                <input type="submit" value="Search" class="btn">
+        </form> 
+       <div class="card">
+            {% if students %}
+            <div class="table">
+                    {% for s in students %}
+                    <a class="table-row" href="/roommate/choose/{{s}}/">
+                        <div class="table-cell">{{s.username}}</div>
+                        <div class="table-cell">{{s.first_name}} {{s.last_name}}</div>
+                    </a>
+                    {% endfor %}
+            </div>              
+            {% endif %}
+        </div>  
+    </div>
+</div>
+
+<style>
+    .table { display:table; }
+    .table-row { display:table-row; }
+    .table-cell { 
+        padding-left:30px;
+        padding-right:250px;
+        padding-top:20px;
+        padding-bottom:20px;
+        display:table-cell;
+    }
+</style>
+
+{% endblock %}

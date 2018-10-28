@@ -1,0 +1,92 @@
+{% extends 'rooms/layout.html' %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+<div class="card" style="background-color:white;margin: 0 auto;float: none;margin-top:30px;margin-left=20px;margin-bottom: 20px;max-width: 100rem;padding:40px;">
+        <div class="card-title">
+            <h3>Select Your Room</h3>
+        </div>
+        <div class="card-subtitle">
+           <table>
+               <tr>
+                   <td>Block: {{ blk }}</td>
+               </tr>
+               <tr>
+              <td> Floor: {{ floor }}</td>
+            </tr>
+        </table>
+        </div>
+        <div class="card-text">
+            <div class="card" >
+                <div class="card-content" id="room">
+                </div>
+                <form class="site-form" action="" method="post">
+                        {% csrf_token %}
+                        Room No: {{ form.room_no }}
+                        <input type="submit" class="btn" value="Submit"/> 
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+<script type='text/JavaScript'>
+window.onload = function() {
+
+  Hello();  
+}
+var previous_room = -1;
+
+function myFunction(ele) {
+
+    ele.style = "text-align:center;padding:7px;border-radius: 3px;margin: 10px;display:inline-block;border:1px solid black;background-color:#d3d3d3;width:60px;";
+    val=document.getElementById("id_room_no");
+    val.value=ele.id;    
+    if (previous_room!=-1)
+    {
+        card = document.getElementById(previous_room);
+        card.style = "text-align:center;padding:7px;border-radius: 3px;margin: 10px;display:inline-block;border:1px solid black;background-color:#00cc00;width:60px;";
+    }
+    previous_room = ele.id;
+} 
+
+function Hello()
+{
+    {% for r in rooms %}
+    var card = document.createElement("div");
+	card.setAttribute("class", "card");
+    card.id = {{r.room_no}};
+    var div0 = document.createElement("div");
+	div0.setAttribute("class", "request");
+	div0.innerHTML = {{r.room_no}};
+	card.appendChild(div0);
+    var div1 = document.createElement("div");
+	div1.setAttribute("class", "request");
+	div1.innerHTML = "Occ:" + {{r.occupancy}};
+	card.appendChild(div1);
+    var test= {{r.availability}};
+    if(test)
+    {
+        card.style="text-align:center;padding:7px;border-radius: 3px; margin: 10px;display: inline-block; border: 1px solid black;background-color:#00cc00;width:60px;";
+        card.addEventListener("click", function(){myFunction(this);}, false);
+    }   
+    else 
+        card.style="text-align:center;padding:7px;border-radius: 3px;margin: 10px;display:inline-block;border:1px solid black;background-color:#ff0000;width:60px;"
+   
+    var main_card = document.getElementById("room");
+    main_card.appendChild(card);	
+    {% endfor %}
+}
+
+
+</script>			
+{% endblock %}

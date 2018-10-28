@@ -1,0 +1,21 @@
+{% extends 'rooms/layout.html' %}
+
+{% block content %}
+<div class="card">
+    <div clss="card-content">
+        Block : {{room.block}}
+        <br>
+        Room No : {{room.room_no}}
+        <br>
+        Floor: {{room.floor}}
+        <br>
+        Availabilty: {{room.availability}}
+        <br>
+        Occupancy: {{room.occupancy}}
+    </div>
+    <div class="card-action">
+        {{room.occupation_date}}
+    </div>
+</div>
+<a href="/room" class="btn">Go Back</a>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'accounts/layout.html' %}
+
+{% block content %}
+<div class="card center-align">
+    <div class="card-content black-text">
+          <span class="card-title"><h4>Fill in your hobbies and interests.</h4></span>
+    </div>
+        <form class="site-form" action="" method="post">
+        <div class="card-content">
+          {% csrf_token %}
+          {{form}}
+        </div>
+        <div class="card-action">
+          <input type="submit" value="Submit" class="btn">
+        </div>
+      </form>
+</div>
+{% endblock %}

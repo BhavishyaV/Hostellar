@@ -1,0 +1,28 @@
+{% extends 'rooms/layout.html' %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+<div class="card" style="background-color:white;margin: 0 auto;float: none;margin-top:50px;margin-left=20px;margin-bottom: 20px;max-width: 40rem;padding:40px;">
+    <div class="card-title">
+        <h5>Select Your Room</h5>
+    </div>
+    <div class="card-content">
+        <form class="site-form" action="" method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <input type="submit" class="btn" value="Next"/> 
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+    

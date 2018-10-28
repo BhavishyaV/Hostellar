@@ -1,0 +1,35 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,
+        initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible"content="ie=edge">
+        <title>Hostellar</title>
+         <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+        <!-- Compiled and minified JavaScript -->
+        <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    </head>
+    <body style="background-image: url({% static 'dorm_room.jpg' %});"> 
+        <nav class="red lighten-2" style="padding-bottom: 4mm">
+                    <div class="container">
+                        <div class="nav-wrapper">
+                          <h3 class="brand-logo" style="padding-bottom: 10mm;">Hostellar</h3>          
+                        </div>
+                        {% block logout %}
+                        {% endblock %}
+                    </div>
+        </nav>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+            <br>
+            <a href="/admin" class="center-align" style="display:block">Admin Login</a>
+        </div>
+    </body>
+</html>

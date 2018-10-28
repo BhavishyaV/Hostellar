@@ -1,0 +1,41 @@
+{% extends 'accounts/layout.html' %}
+
+{% block logout %}
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+<li><a href="/logout/">LOGOUT</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="card center-align">
+    <div class="card-content black-text">
+          <span class="card-title"><h4>Choose Your Roommate</h4></span>
+          <span class="card-subtitle"><h5>Here's a list of students compatible with you</h5></span>
+    </div>
+    <div class="card-content">
+        <div class="card">
+            <div class="table">
+                    {% for s in students %}
+                    <a class="table-row" style="font:black" href="/roommate/choose/{{s}}/">
+                        <div class="table-cell">{{s.student.username}}</div>
+                        <div class="table-cell">{{s.student.first_name}} {{s.student.last_name}}</div>
+                    </a>
+                    {% endfor %}
+            </div>              
+        </div>  
+    </div>
+</div>
+
+<style>
+    .table { display:table; }
+    .table-row { display:table-row; }
+    .table-cell { 
+        padding-left:30px;
+        padding-right:250px;
+        padding-top:20px;
+        padding-bottom:20px;
+        display:table-cell;
+    }
+</style>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+{% extends "accounts/layout.html" %}
+
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block content %}
+<div class="card left-align">
+<form action = "" method="post"class="order-form" >
+<div class="card-content">
+    {% csrf_token %}
+    <h5>{{ q.qno }}.)    {{q.question}}</h5>
+    <ul>
+        <li>1.  {{q.ans1}}</li>
+        <li>2.  {{q.ans2}}</li>
+        <li>3.  {{q.ans3}}</li>   
+        <li>4.  {{q.ans4}}</li>
+    </ul>
+    {%  csrf_token %}
+    {% bootstrap_form form %}
+</div>
+<div class="card-action">
+        <input type="submit" value="Next" class="btn">
+</div>
+</form>
+</div>
+{% endblock %}

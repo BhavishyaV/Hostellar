@@ -1,0 +1,16 @@
+{% extends 'rooms/layout.html' %}
+
+{% block content %}
+<div class="card">
+<div class="card-title">
+    <h5 class="center-align">Select your room</h5>
+</div>
+<div class="card-content">
+<ul class="collection">
+    {% for r in rooms %}
+        <li class="collection-item"><a href="/room/details/{{r.id}}">{{r.block}} {{r.room_no}}</a></li>
+    {% endfor %}
+</ul>
+</div>
+</div>
+{% endblock %}

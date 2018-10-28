@@ -1,0 +1,34 @@
+{% extends 'accounts/layout.html' %}
+
+{% block logout %}
+<ul id="nav-mobile" class="right hide-on-med-and-down">
+<li><a href="/logout/">LOGOUT</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="card" id="card1">
+    <div class="card-title">
+        Select an option
+    </div>
+    <div class="card-content">      
+        <a href="/roommate/choose" class="btn">Choose your roommate</a>
+        <a class="btn" href="/roommate/custom/">Let us find you the best match</a>
+    </div>
+</div>
+
+<style>
+    .card{
+            padding:10px;
+            margin:30px;
+            margin-top:150px;
+            text-align:center;
+            width:max-content;
+    }
+
+    .btn{
+        margin:10px;
+    }
+</style>
+
+{% endblock %}
